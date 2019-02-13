@@ -1,0 +1,12 @@
+$ git log
+commit cb03ecab4342d3d18d9d8bd2a86a06fad48b06cd (HEAD -> master)
+Author: DaniilBoriskin <boriskin.danyyl@gmail.com>
+Date:   Wed Feb 13 19:11:29 2019 +0300
+
+    add status.txt
+
+commit 126985fc420783af0d915008567ee81dcc675ad0
+Author: DaniilBoriskin <boriskin.danyyl@gmail.com>
+Date:   Wed Feb 13 19:08:23 2019 +0300
+
+    add .ignore
