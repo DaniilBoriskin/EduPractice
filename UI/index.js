@@ -117,3 +117,24 @@ let photoPosts = (function () {
         print,
     }
 })()
+
+
+photoPosts.addPhotoPost(new PhotoPost("1", "1", new Date(2009,6,10), "Алиса", "qweq.png",["#cool", "#r"], ["Алиса"]));
+photoPosts.addPhotoPost(new PhotoPost("2", "qwer", new Date(2007,6,10), "Олег", "qwer.png",["#cool", "#wow"], ["Олег", "Алиса"]));
+photoPosts.addPhotoPost(new PhotoPost("3", "1", new Date(2001,6,10), "Алиса", "qweq.png",["#cool", "#s"], ["Алиса"]));
+photoPosts.addPhotoPost(new PhotoPost("4", "1", new Date(2008,5,10), "Богдан", "qweq.png",["#q", "#r"], ["Алиса"]));
+console.log(photoPosts.getPhotoPost("1"));
+console.log(photoPosts.getPhotoPost("4"));
+console.log(photoPosts.getPhotoPosts(1,3,{
+    hashtags: ["#cool"],
+}));
+console.log(photoPosts.getPhotoPosts(0,2,{
+    hashtags: ["#r"],
+}));
+console.log(photoPosts.getPhotoPost("1"));
+console.log(photoPosts.editPhotoPost("1",{
+    photoLink: "qwefdgfemwke.wdqw",
+}));
+console.log(photoPosts.getPhotoPost("1"));
+console.log(photoPosts.removePhotoPost("1"));
+console.log(photoPosts.getPhotoPost("1"));
