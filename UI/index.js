@@ -18,42 +18,30 @@ class PhotoPosts{
 	}
 
 	getPhotoPosts(skip, size, filterConfig) {
-		if (skip < this._photoPosts.length) {
-			let res = this._photoPosts;
-			if (filterConfig !== undefined) {
-				if (filterConfig.hashtags && filterConfig.author) {
-					res = res.filter(post => {
-						if (post.author === filterConfig.author) {
-							for (let i = 0; i < post.hashtags.length; ++i) {
-								for (let j = 0; j < filterConfig.hashtags.length; ++j) {
-									if (filterConfig.hashtags[j] === post.hashtags[i]) {
-										return true;
-									}
-								}
-							}
-						}
-						return false;
-					});
-				} else {
-					if (filterConfig.author) {
-						res = res.filter(post => post.author === filterConfig.author);
-					}
-					if (filterConfig.hashtags) {
-						res = res.filter(post => {
-							for (let i = 0; i < post.hashtags.length; ++i) {
-								for (let j = 0; j < filterConfig.hashtags.length; ++j) {
-									if (filterConfig.hashtags[j] === post.hashtags[i]) {
-										return true;
-									}
-								}
-							}
-							return false;
-						});
-					}
+		if (!(skip >= 0 && skip < this._photoPosts.length)) {
+			return [];
+		}
+		let res = this._photoPosts;
+		if (filterConfig !== undefined) {
+			if (filterConfig.author) {
+				res = res.filter(post => post.author === filterConfig.author);
+			}
+			if (filterConfig.hashtags) {
+				res = this._filterByHashTags(res, filterConfig.hashtags);
+			}
+		}
+		return res.sort((a, b) => b.createdAt - a.createdAt).slice(skip, skip + size);
+	}
+	
+	_filterByHashTags(arr, hashtags){
+		return arr.filter(post => {
+			for (let i = 0; i < post.hashtags.length; ++i) {
+				if (hashtags.some((item) => item === post.hashtags[i])){
+					return true;
 				}
 			}
-			return res.sort((a, b) => b.createdAt - a.createdAt).slice(skip, skip + size);
-		}
+			return false;
+		});
 	}
 
 	static validatePhotoPost(post) {
@@ -72,13 +60,13 @@ class PhotoPosts{
 	}
 
 	getPhotoPost(id) {
-		if (id > 0 && id <= this._photoPosts.length) {
-			return this._photoPosts[id - 1];
-		}
+		return this._photoPosts.find((item) => {
+			return item.id === id;
+		});
 	}
 
 	addPhotoPost(post) {
-		let isValid = PhotoPosts.validatePhotoPost(post);
+		const isValid = PhotoPosts.validatePhotoPost(post);
 		if(isValid) {
 			this._photoPosts.push(post);
 		}
@@ -86,16 +74,14 @@ class PhotoPosts{
 	}
 
 	editPhotoPost(id, post) {
-		if (id > '0' && id <= this._photoPosts.length) {
-			let curPost = this.getPhotoPost(id);
-			let tempPost = new Post(curPost.id, post.description, curPost.createdAt, curPost.author, post.photoLink, curPost.hashtags, curPost.likes);
-			let isValid = PhotoPosts.validatePhotoPost(tempPost);
-			if (isValid) {
-				this._photoPosts[id - 1] = tempPost;
-			}
-			return isValid;
+		if (!(id > '0' && id <= this._photoPosts.length)) return false;
+		const curPost = this.getPhotoPost(id);
+		let tempPost = new Post(curPost.id, post.description, curPost.createdAt, curPost.author, post.photoLink, curPost.hashtags, curPost.likes);
+		let isValid = PhotoPosts.validatePhotoPost(tempPost);
+		if (isValid) {
+			this._photoPosts[id - 1] = tempPost;
 		}
-		return false;
+		return isValid;
 	}
     
 	removePhotoPost(id) {
@@ -107,15 +93,9 @@ class PhotoPosts{
 	}
 
 	addAll(arr){
-		let res = [];
-		if(Array.isArray(arr)){
-			for(let i = 0; i < arr.length; ++i){
-				if(!this.addPhotoPost(arr[i])){
-					res.push(arr[i]);
-				}
-			}
-		}
-		return res;
+		return arr.reduce((done,curr) => {
+			return this.addPhotoPost(curr) ? [] : done.concat(curr);
+		},[]);
 	}
 }
 
@@ -126,9 +106,11 @@ q.addPhotoPost(new Post('3', '1', new Date(2001,6,10), 'Алиса', 'qweq.png',
 q.addPhotoPost(new Post('4', '1', new Date(2008,5,10), 'Богдан', 'qweq.png',['#q', '#r'], ['Алиса']));
 console.log(q.getPhotoPost('1'));
 console.log(q.getPhotoPost('4'));
+console.log(q.getPhotoPosts(0,100));
 console.log(q.getPhotoPosts(1,3,{
 	hashtags: ['#cool'],
 }));
+
 console.log(q.getPhotoPosts(0,2,{
 	hashtags: ['#r'],
 }));
@@ -138,4 +120,12 @@ console.log(q.editPhotoPost('1',{
 }));
 console.log(q.getPhotoPost('1'));
 console.log(q.removePhotoPost('1'));
-console.log(q.getPhotoPost('1'));
+console.log(q.getPhotoPost('2'));
+
+let arr = [];
+arr.push(new Post('1', '1', new Date(2009,6,10), 'Алиса', 'qweq.png',['#cool', '#r'], ['Алиса']));
+arr.push(new Post('1', '1', new Date(2009,6,10), 'Алиса', 'qweq.png',['#cool', '#r'], ['Алиса']));
+arr.push(new Post('1', '1', new Date(2009,6,10), 'Алиса', 'qweq.png',['#cool', '#r'], ['Алиса']));
+arr.push(new Post('1', '1', new Date(2009,6,10), 5, 'qweq.png',['#cool', '#r'], ['Алиса']));
+console.log(q.addAll(arr));
+console.log(q.getPhotoPosts(0,100));
