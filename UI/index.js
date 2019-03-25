@@ -124,6 +124,7 @@ class View {
 	constructor(){
 		this._postContainer = document.getElementById('container');
 		this._postTemplate = document.getElementById('post-template');
+		this._postContainer.style.display = 'none';
 	}
 
 	getPostHTML(post) {
@@ -189,6 +190,10 @@ class View {
 		this._postContainer.appendChild(this._postTemplate);
 		this._postContainer.appendChild(chevron);
 	}
+
+	switchOnOff(){
+		this._postContainer.style.display = this._postContainer.style.display === 'none' ? '': 'none';
+	}
 }
 
 const work = (function () {
@@ -245,6 +250,10 @@ const work = (function () {
 		}
 	}
 
+	function switchOnOff(){
+		view.switchOnOff();
+	}
+
 	return{
 		addPost,
 		removePost,
@@ -255,6 +264,7 @@ const work = (function () {
 		clear,
 		addPosts,
 		addAll,
+		switchOnOff,
 	};
 })();
 
@@ -270,3 +280,4 @@ work.editPost('3', {
 	photoLink: 'https://lastday.club/wp-content/uploads/2016/08/Sedobnye-griby-Klassifikatsiya-kategorii-osobennosti-Last-Day-Club.jpg',
 });
 work.addPosts(0,2);
+work.switchOnOff();
