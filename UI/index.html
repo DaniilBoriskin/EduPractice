@@ -60,99 +60,37 @@
                     </div>
                 </div>
             </div>
-            <div class="post-container">
-                <div class="post">
-                    <div class="post-header">
-                        <div class="user-info-wrapper">
-                            <img class="post-user-avatar" src="img/user.png">
-                            <span>Олег Лежайко</span>
-                        </div>
-                        <img class="post-header-menu" src="img/menu.png">
-                    </div>
-                    <div class="post-description">
-                        <small>99% процентов не найдут здесь чернику!!!</small>
-                    </div>
-                    <div class="post-photo">
-                        <img src="img/picture2_skolko-jagod-sobe_342560_p0.jpg">
-                    </div>
-                    <div class="post-footer">
-                        <div class="post-footer-data">
-                            <span class="date-container">28 февраля 2019</span>
-                            <div class="hashtag-container">
-                                <a href="#">#hashtag</a>
-                                <a href="#">#hashtag</a>
-                                <a href="#">#hashtag</a>
+            <div class="post-container" id="container">
+                <template id="post-template">
+                    <div class="post" data-id="">
+                        <div class="post-header">
+                            <div class="user-info-wrapper">
+                                <img class="post-user-avatar" src="img/user.png">
+                                <span class="post-user-name">Олег Лежайко</span>
                             </div>
+                            <img class="post-header-menu" src="img/menu.png">
                         </div>
-                        <div class="like">
-                            <div class="like-container">
-                                <img src="img/like.png">
-                                <span class="like-counter">48</span>
+                        <div class="post-description">
+                            <small>99% процентов не найдут здесь чернику!!!</small>
+                        </div>
+                        <div class="post-photo">
+                            <img src="img/picture2_skolko-jagod-sobe_342560_p0.jpg">
+                        </div>
+                        <div class="post-footer">
+                            <div class="post-footer-data">
+                                <span class="date-container">28 февраля 2019</span>
+                                <div class="hashtag-container">
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <!--  -->
-                <!-- <div class="post">
-                    <div class="post-header">
-                        <div class="user-info-wrapper">
-                            <img class = "post-user-avatar" src="img/user.png">
-                            <span>Олег Лежайко</span>
-                        </div>
-                        <img class = "post-header-menu" src = "img/menu.png">
-                    </div>
-                    <div class="post-photo">
-                        <img src = "img/picture2_skolko-jagod-sobe_342560_p0.jpg">
-                    </div>
-                    <div class="post-footer">
-                        <div class="post-footer-data">
-                            <span class="date-container">28 февраля 2019</span>
-                            <span class="hashtag-container">
-                                <a href = "#">#hashtag</a>
-                                <a href = "#">#hashtag</a>
-                                <a href = "#">#hashtag</a>
-                            </span>
-                        </div>
-                        <div class="like">
-                            <div class="like-container">
-                                <img src = "img/like.png">
-                                <span class = "like-counter">48</span>
+                            <div class="like">
+                                <div class="like-container">    
+                                    <img src="img/like.png">
+                                    <span class="like-counter">48</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div> -->
-                <!--  -->
-                <div class="post">
-                    <div class="post-header">
-                        <div class="user-info-wrapper">
-                            <img class="post-user-avatar" src="img/user.png">
-                            <span>Олег Лежайко</span>
-                        </div>
-                        <img class="post-header-menu" src="img/menu.png">
-                    </div>
-                    <div class="post-description">
-                        <small>99% процентов не найдут здесь чернику!!!</small>
-                    </div>
-                    <div class="post-photo">
-                        <img src="img/picture2_skolko-jagod-sobe_342560_p0.jpg">
-                    </div>
-                    <div class="post-footer">
-                        <div class="post-footer-data">
-                            <span class="date-container">28 февраля 2019</span>
-                            <div class="hashtag-container">
-                                <a href="#">#hashtag</a>
-                                <a href="#">#hashtag</a>
-                                <a href="#">#hashtag</a>
-                            </div>
-                        </div>
-                        <div class="like">
-                            <div class="like-container">
-                                <img src="img/like.png">
-                                <span class="like-counter">48</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                </template>
                 <div class="load-more">
                     <img src="img/down-chevron.png">
                 </div>
