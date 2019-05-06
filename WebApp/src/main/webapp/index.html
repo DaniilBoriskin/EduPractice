@@ -5,15 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
     <title>Alert</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <link rel="stylesheet" type="text/css" href="form.css">
+    <link rel="stylesheet" type="text/css" href="Resources/CSS/styles.css">
+    <link rel="stylesheet" type="text/css" href="Resources/CSS/form.css">
 </head>
 
 <body>
     <div class="app">
         <header>
             <div class="title">
-                <img alt="Logo" src="img/logo.png">
+                <img alt="Logo" src="Resources/img/logo.png">
                 <h1>Alert</h1>
             </div>
 
@@ -24,11 +24,11 @@
             <div class="user-container">
                 <span class="user-name">Олег</span>
                 <div class="user-photo">
-                    <img alt="Photo" src="img/user.png">
+                    <img alt="Photo" src="Resourses/img/user.png">
                 </div>
                 <div class="buttons-group">
-                    <button class="add-post-button but1">Add post</button>
-                    <button class="log-out-button">Log out</button>
+                    <button class="add-post-button but1" id = "sign-up">Add post</button>
+                    <button class="log-out-button" id = "log-in">Log out</button>
                 </div>
             </div>
         </header>
@@ -66,16 +66,16 @@
                     <div class="post" data-id="">
                         <div class="post-header">
                             <div class="user-info-wrapper">
-                                <img class="post-user-avatar" src="img/user.png">
+                                <img class="post-user-avatar" src="Resources/img/user.png">
                                 <span class="post-user-name">Олег Лежайко</span>
                             </div>
-                            <img class="post-header-menu" src="img/menu.png">
+                            <img class="post-header-menu" src="Resources/img/menu.png">
                         </div>
                         <div class="post-description">
                             <small>99% процентов не найдут здесь чернику!!!</small>
                         </div>
                         <div class="post-photo">
-                            <img src="img/picture2_skolko-jagod-sobe_342560_p0.jpg">
+                            <img src="Resources/img/picture2_skolko-jagod-sobe_342560_p0.jpg">
                         </div>
                         <div class="post-footer">
                             <div class="post-footer-data">
@@ -85,7 +85,7 @@
                             </div>
                             <div class="like">
                                 <div class="like-container">    
-                                    <img class="like-image" src="img/like.png" data-isliked="0">
+                                    <img class="like-image" src="Resources/img/like.png" data-isliked="0">
                                     <span class="like-counter">48</span>
                                 </div>
                             </div>
@@ -93,7 +93,7 @@
                     </div>
                 </template>
                 <div class="load-more">
-                    <img src="img/down-chevron.png">
+                    <img src="Resources/img/down-chevron.png">
                 </div>
             </div>
             <div class="empty">
@@ -130,10 +130,10 @@
             </div>
         </footer>
     </div>
-    <script src="user.js"></script>
-    <script src="posts.js"></script>
-    <script src="view.js"></script>
-    <script src="controller.js"></script>
+    <script src="Resources/JS/user.js"></script>
+    <script src="Resources/JS/posts.js"></script>
+    <script src="Resources/JS/view.js"></script>
+    <script src="Resources/JS/controller.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,48 @@
+#enter-box{
+    position: fixed;
+    top: 0;
+    background-color: rgba(0,0,0,0.5);
+    overflow: hidden;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+#enter-form{
+    background-color: white;
+    position: absolute;
+    top:20%;
+    left:35%;
+    height: 25vw;
+    width: 30%;
+
+
+}
+
+#enter-title{
+    position: absolute;
+    top:10%;
+    left:40%;
+}
+
+#login-container{
+
+    position: absolute;
+    top:40%;
+    left:35%;
+    display: flex;
+    flex-direction: column;
+}
+
+#password-container{
+    position: absolute;
+    top:55%;
+    left:35%;
+    display: flex;
+    flex-direction: column;
+}
+
+#submit-enter{
+    position: absolute;
+    right: 1%;
+    bottom: 1%;
+}
