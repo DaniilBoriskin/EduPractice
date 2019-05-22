@@ -1,0 +1,3 @@
+SELECT Users.* FROM Users, Posts WHERE Users.USER_ID = Posts.USER_ID
+GROUP BY Users.USER_ID
+HAVING COUNT(Posts.USER_ID) > 3;
